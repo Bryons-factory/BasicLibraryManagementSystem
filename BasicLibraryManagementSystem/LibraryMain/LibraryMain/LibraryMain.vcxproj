@@ -136,7 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
+    <ClInclude Include="Faculty.h" />
     <ClInclude Include="InventoryItem.h" />
+    <ClInclude Include="Staff.h" />
     <ClInclude Include="Storage.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="User.h" />
