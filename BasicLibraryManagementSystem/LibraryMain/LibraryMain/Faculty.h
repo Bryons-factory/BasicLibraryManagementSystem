@@ -1,12 +1,12 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#ifndef FACULTY_H
+#define FACULTY_H
 #include "User.h"
 
 #include <string>
 #include <iostream>
-class Student : public User {
+class Faculty : public User{
 public:
-	int studentID() {
+	int facultyID() {
 		return 	getInstitutionalID();
 	}
 };
