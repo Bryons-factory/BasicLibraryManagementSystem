@@ -53,7 +53,16 @@ public:
 	void addUser(User user); //adds item to back og inventory
 	void removeUserAt(int index); //removes item at index
 	void setNumUsers(int numU);
-
+	
+	//other
+	User searchUserByID(int id) {
+		for (int i = 0; i < numUsers; i++) {
+			if (userAccounts[i].getInstitutionalID() == id) {
+				return userAccounts[i];
+			}
+		}
+		std::cout << "User ID doesn't exist";
+	}
 
 
 };
