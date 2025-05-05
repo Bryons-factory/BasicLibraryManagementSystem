@@ -4,6 +4,10 @@
 #include <string>
 #include "InventoryItem.h"
 #include "User.h"
+#include "Borrowing.h";
+
+
+class User;
 
 class Storage {
 private:

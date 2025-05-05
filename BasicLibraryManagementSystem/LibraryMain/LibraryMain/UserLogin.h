@@ -44,12 +44,12 @@ public:
 	UserLogin(const UserLogin& other);
 
 	// Member function to log in a user
-	bool Login();
+	bool Login(User& outUser);
 
 	// Member function to log out a user
 	void Logout();
 
 	// Member function to print user summary
-	void PrintUserSummary() const;
+	void PrintUserSummary(User curUser) const;
 };
 #endif // USERLOGIN_H
