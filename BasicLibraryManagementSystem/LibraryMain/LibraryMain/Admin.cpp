@@ -1,10 +1,11 @@
-#include "Admin.h"
+﻿#include "Admin.h"
 #include "User.h"
 #include "UserLogin.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 // constructor
 Admin::Admin() {
@@ -90,20 +91,27 @@ void Admin::deleteUserAccount(int institutionalID) {
 	std::ofstream tempFile("temp.txt");
 	std::string line;
 	bool found = false;
+
 	if (userFile.is_open() && tempFile.is_open()) {
 		while (std::getline(userFile, line)) {
-			std::istringstream iss(line);
-			int id;
-			iss >> id;
-			if (id != institutionalID) {
-				tempFile << line << std::endl;
+			std::stringstream ss(line);
+			std::string token;
+			std::vector<std::string> tokens;
+
+			while (std::getline(ss, token, ',')) {
+				tokens.push_back(token);
+			}
+
+			if (tokens.size() >= 7 && std::stoi(tokens[6]) == institutionalID) {
+				found = true; // matched, don't write to temp
 			}
 			else {
-				found = true;
+				tempFile << line << std::endl; 
 			}
 		}
 		userFile.close();
 		tempFile.close();
+
 		if (found) {
 			remove("users.txt");
 			rename("temp.txt", "users.txt");
@@ -161,10 +169,15 @@ void Admin::editUserAccount(int institutionalID, const std::string& newFirstName
 	bool found = false;
 	if (userFile.is_open() && tempFile.is_open()) {
 		while (std::getline(userFile, line)) {
-			std::istringstream iss(line);
-			int id;
-			iss >> id;
-			if (id == institutionalID) {
+			std::stringstream ss(line);
+			std::string token;
+			std::vector<std::string> tokens;
+
+			while (std::getline(ss, token, ',')) {
+				tokens.push_back(token);
+			}
+
+			if (tokens.size() >= 7 && std::stoi(tokens[6]) == institutionalID) {
 				line = newFirstName + "," + newLastName + "," + newAddress + ","
 					+ newPhoneNumber + "," + newEmail + "," + newPassword + ","
 					+ std::to_string(institutionalID);
@@ -252,7 +265,45 @@ void Admin::searchUser(const std::string& searchTerm) {
 	}
 }
 
+bool Admin::Login() {
+	std::string inputEmail;
+	std::string inputPassword;
 
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cout << "Enter your email: ";
+	std::getline(std::cin, inputEmail);
+	std::cout << "Enter your password: ";
+	std::getline(std::cin, inputPassword);
+
+	std::ifstream userFile("Admin.txt");
+	std::string line;
+
+	if (userFile.is_open()) {
+		while (std::getline(userFile, line)) {
+			std::stringstream ss(line);
+			std::string token;
+			std::vector<std::string> tokens;
+
+			while (std::getline(ss, token, ',')) {
+				tokens.push_back(token);
+			}
+
+			if (tokens.size() >= 2 && tokens[0] == inputEmail && tokens[1] == inputPassword) {
+				
+				std::cout << "Login successful!\n" << std::endl;
+				userFile.close();
+				return true;
+			}
+		}
+		userFile.close();
+		std::cout << "Invalid email or password. If you are not a Librarian please go else where." << std::endl;
+		return false;
+	}
+	else {
+		std::cerr << "Error opening user file." << std::endl;
+		return false;
+	}
+}
 
 
 

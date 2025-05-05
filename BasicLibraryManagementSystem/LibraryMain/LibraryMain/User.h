@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include "Borrowing.h"
+#include "inventoryItem.h"
 
 class User {
 private:
@@ -15,7 +17,7 @@ private:
     int institutionalID;
 
     // Future member object:
-    // Borrowing borrowed;
+    Borrowing borrowed;
 
 public:
     // Default constructor
@@ -40,7 +42,8 @@ public:
     void setInstitutionalID(int newID) { institutionalID = newID; }
 
     // --- Stub for future method ---
-    std::string getBorrowedBook() const {
+    std::string getBorrowedItems() const {
+
         return "Book is seen!"; // Stub return value
     }
 };

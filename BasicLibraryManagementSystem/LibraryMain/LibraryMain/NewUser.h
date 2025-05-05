@@ -20,6 +20,7 @@
 */
 #ifndef NEWUSER_H
 #define NEWUSER_H
+#include "User.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -34,11 +35,9 @@ public:
 	// Copy constructor
 	NewUser(const NewUser& other);
 	// Member function to register a new user
-	void RegisterNewUser();
-	// Member function to validate user input
-	bool ValidateInput(const std::string& input);
-	// Member function to generate a unique library ID
-	std::string GenerateLibraryID();
+	User RegisterNewUser();
+	
+	
 };
 #endif // NEWUSER_H
 

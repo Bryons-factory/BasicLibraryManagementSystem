@@ -3,13 +3,18 @@
 #include "User.h"
 #include "Admin.h"
 #include "NewUser.h"
-
-
+#include "Storage.h"
+#include <string>
 #include <iostream>
-
+#include "Search.h"
 int main()
 {
-	std::cout << "Hello Thomas's Branch!\n";
+	Admin admin;
+	NewUser newUserDatabase;
+	UserLogin loginUser;
+	User userHolder;
+	Storage allData;
+	Search selection;
 
 	std::cout << "Welcome to Library Management System!" << std::endl;
 	std::cout << "created by Ben, Bryon, Thomas" << std::endl;
@@ -17,6 +22,8 @@ int main()
 	int sel;
 	std::string username;
 	std::string password;
+	std::string title;
+	std::string itemType;
 
 	while (true)
 	{
@@ -28,77 +35,83 @@ int main()
 		switch (sel) {
 		case 1:
 			std::cout << "Register New Users" << std::endl;
-
+			allData.addUser(newUserDatabase.RegisterNewUser());
 			break;
 		case 2:
 			std::cout << "Admin (Librarian) Login" << std::endl;
-			std::cout << "Please enter your username: ";
 
-			std::cin >> username;
-			std::cout << "Please enter your password: ";
-
-			std::cin >> password;
-
+			if(admin.Login())
+			{
 			// options for admin assuming correct login
-			std::cout << "1. Add Inventory Item" << std::endl;
-			std::cout << "2. Delete Inventory Item" << std::endl;
-			std::cout << "3. Add User Account" << std::endl;
-			std::cout << "4. Delete User Account" << std::endl;
-			std::cout << "5. Edit Inventory" << std::endl;
-			std::cout << "6. Edit User Details" << std::endl;
-			std::cout << "7. View Active Users" << std::endl;
-			std::cout << "8. Search Inventory" << std::endl;
-			std::cout << "9. Search Users" << std::endl;
-			std::cout << "10. Logout" << std::endl;
-			int adminSel;
-			std::cin >> adminSel;
-			switch (adminSel) {
-			case 1:
-				std::cout << "Add Inventory Item" << std::endl;
-				break;
-			case 2:
-				std::cout << "Delete Inventory Item" << std::endl;
-				break;
-			case 3:
-				std::cout << "Add User Account" << std::endl;
-				break;
-			case 4:
-				std::cout << "Delete User Account" << std::endl;
-				break;
-			case 5:
-				std::cout << "Edit Inventory" << std::endl;
-				break;
-			case 6:
-				std::cout << "Edit User Details" << std::endl;
-				break;
-			case 7:
-				std::cout << "View Active Users" << std::endl;
-				break;
-			case 8:
-				std::cout << "Search Inventory" << std::endl;
-				break;
-			case 9:
-				std::cout << "Search Users" << std::endl;
-				break;
-			case 10:
-				std::cout << "Logout" << std::endl;
-				break;
-			default:
-				std::cout << "Invalid selection. Please try again." << std::endl;
-				break;
+				std::cout << "1. Add Inventory Item" << std::endl;
+				std::cout << "2. Delete Inventory Item" << std::endl;
+				std::cout << "3. Add User Account" << std::endl;
+				std::cout << "4. Delete User Account" << std::endl;
+				std::cout << "5. Edit Inventory" << std::endl;
+				std::cout << "6. Edit User Details" << std::endl;
+				std::cout << "7. View Active Users" << std::endl;
+				std::cout << "8. Search Inventory" << std::endl;
+				std::cout << "9. Search Users" << std::endl;
+				std::cout << "10. Logout" << std::endl;
+				int adminSel;
+				std::cin >> adminSel;
+				switch (adminSel) {
+					case 1:
+						
+						std::cout << "Add Inventory Item" << std::endl;
+						std::cout << "Add Inventory Item" << std::endl;
+						//admin.addInventoryItem();
+						break;
+					case 2:
+					std::cout << "Delete Inventory Item" << std::endl;
+					break;
+					case 3:
+					std::cout << "Add User Account" << std::endl;
+					break;
+					case 4:
+					std::cout << "Delete User Account" << std::endl;
+					break;
+					case 5:
+					std::cout << "Edit Inventory" << std::endl;
+					break;
+					case 6:
+					std::cout << "Edit User Details" << std::endl;
+					break;
+					case 7:
+					std::cout << "View Active Users" << std::endl;
+					break;
+					case 8:
+					std::cout << "Search Inventory" << std::endl;
+					break;
+					case 9:
+					std::cout << "Search Users" << std::endl;
+					break;
+					case 10:
+					std::cout << "Logout" << std::endl;
+					break;
+					default:
+					std::cout << "Invalid selection. Please try again." << std::endl;
+					break;
+				}
 			}
+
 			break;
 		case 3:
-			std::cout << "User Login" << std::endl;
-			std::cout << "Please enter your username: ";
-			std::cin >> username;
-			std::cout << "Please enter your password: ";
-			std::cin >> password;
+			
+			loginUser.Login(userHolder);
 
-
-
-
-			std::cout << "print user summary" << std::endl;
+			loginUser.PrintUserSummary(userHolder);
+			int sel2;
+			std::cout << "\nSelect 1 to search our selection, else press any other key";
+			std::cin >> sel2;
+			while(sel2== 1){
+				switch(sel2)
+					case 1:
+					selection.displayInventory();
+					std::cout << "\nPlease contact the admin if any item  interests you! Press any key to continue.";
+					std::cin >> sel2;
+			}
+			std::cout << std::endl;
 
 			break;
 

@@ -63,11 +63,13 @@ public:
 		const std::string& newPhoneNumber, const std::string& newEmail,
 		const std::string& newPassword);
 	// Function to view total number of active users
-	void viewTotalActiveUsers();
+	int viewTotalActiveUsers();
 	// Function to search for inventory items
 	void searchInventoryItem(const std::string& searchTerm);
 	// Function to search for users
 	void searchUser(const std::string& searchTerm);
+	//Function to login to Admin Account
+	bool Login();
 };
 
 #endif // ADMIN_H

@@ -6,7 +6,7 @@ Storage::Storage(InventoryItem* inv, int ele, User* users, int numU) {
 	inventory = inv;
 	inventoryElements = ele;
 	userAccounts = users;
-	int numUsers = numU
+	int numUsers = numU;
 }
 Storage::Storage(const Storage& other) {
 	inventory = other.getInventory();
