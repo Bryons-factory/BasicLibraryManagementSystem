@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Search.h"
 #include "Book.h"
+#include <limits>
 
 int main()
 {
@@ -36,7 +37,12 @@ int main()
 		std::cout << "2. Admin (Librarian) Login" << std::endl;
 		std::cout << "3. User Login" << std::endl;
 		std::cout << "4. Exit" << std::endl;
-		std::cin >> sel;
+
+		if (!(std::cin >> sel)) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			continue;
+		}
 		switch (sel) {
 		case 1:
 			std::cout << "Register New Users" << std::endl;
