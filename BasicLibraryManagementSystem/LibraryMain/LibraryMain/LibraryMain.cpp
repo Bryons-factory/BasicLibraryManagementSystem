@@ -7,6 +7,8 @@
 #include <string>
 #include <iostream>
 #include "Search.h"
+#include "Book.h"
+
 int main()
 {
 	Admin admin;
@@ -15,15 +17,18 @@ int main()
 	User userHolder;
 	Storage allData;
 	Search selection;
+	Book book;
+
 
 	std::cout << "Welcome to Library Management System!" << std::endl;
 	std::cout << "created by Ben, Bryon, Thomas" << std::endl;
 	std::cout << "Select an option (1-4) to begin:" << std::endl;
-	int sel;
+	int sel, adminSel, institutionalID;
 	std::string username;
 	std::string password;
-	std::string title;
-	std::string itemType;
+	std::string title, publisher, author, firstName, lastName, address,
+				phoneNumber;
+	std::string itemType, newItemType;
 
 	while (true)
 	{
@@ -49,49 +54,107 @@ int main()
 				std::cout << "4. Delete User Account" << std::endl;
 				std::cout << "5. Edit Inventory" << std::endl;
 				std::cout << "6. Edit User Details" << std::endl;
-				std::cout << "7. View Active Users" << std::endl;
-				std::cout << "8. Search Inventory" << std::endl;
-				std::cout << "9. Search Users" << std::endl;
-				std::cout << "10. Logout" << std::endl;
+				std::cout << "6. View Active Users" << std::endl;
+				std::cout << "7. Search Inventory" << std::endl;
+				std::cout << "8. Search Users" << std::endl;
+				std::cout << "9. Logout" << std::endl;
 				int adminSel;
 				std::cin >> adminSel;
 				switch (adminSel) {
 					case 1:
 						
 						std::cout << "Add Inventory Item" << std::endl;
-						std::cout << "Add Inventory Item" << std::endl;
-						//admin.addInventoryItem();
+						std::cout << "What is the title of the item you would like to add?" << std::endl;
+						std::cin >> title;
+
+						std::cout << "What is the publisher of the item you would like to add?" << std::endl;
+						std::cin >> publisher;
+
+						std::cout << "What is the author of the item you would like to add?" << std::endl;
+						std::cin >> author;
+						
+						std::cout << "What is type of media are you adding(book, magazine, or other)?" << std::endl;
+						std::cin >> itemType;
+
+						admin.addInventoryItem(title,publisher,author,itemType);
+
+						std::cout << "You've succesfully added an item to our database" << std::endl;
 						break;
 					case 2:
-					std::cout << "Delete Inventory Item" << std::endl;
-					break;
+						std::cout << "Delete Inventory Item" << std::endl;
+						std::cout << "What is the title of the item you would like to delete?" << std::endl;
+						std::cin >> title;
+
+						admin.deleteInventoryItem(title);
+
+						std::cout << "You've succesfully deleted an item to our database!" << std::endl;
+						break;
 					case 3:
-					std::cout << "Add User Account" << std::endl;
-					break;
+						std::cout << "Add User Account" << std::endl;
+
+						std::cout << "Please enter the first name of the user to be added: ";
+						std::cin >> firstName;
+
+						std::cout << "Please enter the last name of the user to be added: ";
+						std::cin >> lastName;
+
+						std::cin.ignore(); // Clear newline from buffer before getline
+
+						std::cout << "Please enter the address: ";
+						std::getline(std::cin, address);
+
+						std::cout << "Please enter the phone number: ";
+						std::getline(std::cin, phoneNumber);
+
+						std::cout << "Please enter the email: ";
+						std::getline(std::cin, username);
+
+						std::cout << "Please enter the password: ";
+						std::getline(std::cin, password);
+
+						std::cout << "Please enter the institutional ID: ";
+						std::cin >> institutionalID;
+
+						admin.addUserAccount(firstName, lastName, address, phoneNumber, username, password, institutionalID);
+						break;
 					case 4:
-					std::cout << "Delete User Account" << std::endl;
-					break;
+						std::cout << "Delete User Account" << std::endl;
+
+						std::cout << "Please enter the institutional ID of user to be deleted ";
+						std::cin >> institutionalID;
+						admin.deleteUserAccount(institutionalID);
+						break;
 					case 5:
-					std::cout << "Edit Inventory" << std::endl;
-					break;
+						std::cout << "Edit Inventory" << std::endl;
+						std::cout << "Please enter the value you would like to be changed in our library database."  << std::endl;
+						std::cin >> itemType;
+						std::cout << "Please enter the replacement value you would like to be placed in our library database." << std::endl;
+						std::cin >> newItemType;
+						admin.editInventoryItem(itemType, newItemType);
+						break;
 					case 6:
-					std::cout << "Edit User Details" << std::endl;
-					break;
+						std::cout << "View Active Users" << std::endl;
+						admin.viewTotalActiveUsers();
+						break;
 					case 7:
-					std::cout << "View Active Users" << std::endl;
-					break;
+						std::cout << "Search Inventory" << std::endl;
+						std::cout << "Please enter the value you would like to search for and we will return any matches" << std::endl;
+						std::cin >> itemType;
+						admin.searchInventoryItem(itemType);
+						break;
 					case 8:
-					std::cout << "Search Inventory" << std::endl;
-					break;
+						std::cout << "Search Users" << std::endl;
+						std::cout << "Please enter the user you would like to search for and we will return any matches" << std::endl;
+						std::cin >> itemType;
+						admin.searchUser(itemType);
+						break;
 					case 9:
-					std::cout << "Search Users" << std::endl;
-					break;
-					case 10:
-					std::cout << "Logout" << std::endl;
-					break;
+						std::cout << "Logout" << std::endl;
+						continue;
+						break;
 					default:
-					std::cout << "Invalid selection. Please try again." << std::endl;
-					break;
+						std::cout << "Invalid selection. Please try again." << std::endl;
+						break;
 				}
 			}
 
@@ -108,8 +171,11 @@ int main()
 				switch(sel2)
 					case 1:
 					selection.displayInventory();
-					std::cout << "\nPlease contact the admin if any item  interests you! Press any key to continue.";
+					std::cout << "\nPlease contact the admin if any item  interests you! Press any integer key and press enter to continue.";
 					std::cin >> sel2;
+					std::cout << "\nSelect an option (1-4) to begin:";
+					std::cin >> sel;
+					break;
 			}
 			std::cout << std::endl;
 
@@ -123,7 +189,7 @@ int main()
 			break;
 		default:
 			std::cout << "Invalid selection. Please try again." << std::endl;
-			std::cout << "Select an option (1-4) to begin:" << std::endl;
+			std::cout << "Select an option (1-4) and press enter to begin:" << std::endl;
 			break;
 		}
 	}

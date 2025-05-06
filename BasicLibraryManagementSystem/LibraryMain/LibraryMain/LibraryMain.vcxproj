@@ -131,6 +131,7 @@
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="InventoryItem.cpp" />
     <ClCompile Include="LibraryMain.cpp" />
+    <ClCompile Include="Magazine.cpp" />
     <ClCompile Include="NewUser.cpp" />
     <ClCompile Include="Search.cpp" />
     <ClCompile Include="Storage.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Borrowing.h" />
     <ClInclude Include="Faculty.h" />
     <ClInclude Include="InventoryItem.h" />
+    <ClInclude Include="Magazine.h" />
     <ClInclude Include="NewUser.h" />
     <ClInclude Include="Search.h" />
     <ClInclude Include="Staff.h" />

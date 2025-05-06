@@ -24,10 +24,13 @@ Admin::~Admin() {
 }
 
 // function to add inventory items
-void Admin::addInventoryItem(const std::string& itemName, const std::string& itemType) {
+void Admin::addInventoryItem(const std::string& title, const std::string& publisher, const std::string& author, const std::string& itemType) {
 	std::ofstream inventoryFile("inventory.txt", std::ios::app);
 	if (inventoryFile.is_open()) {
-		inventoryFile << itemName << "," << itemType << std::endl;
+		inventoryFile << title << ","
+					  << publisher << ","
+					  << author << ","
+					  << itemType << std::endl;
 		inventoryFile.close();
 		std::cout << "Inventory item added successfully." << std::endl;
 	}

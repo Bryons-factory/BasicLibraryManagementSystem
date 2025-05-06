@@ -1,15 +1,14 @@
-The Hitchhiker's Guide to the Galaxy,Pan Books,Douglas Adams
-Good Omens,Workman Publishing,Terry Pratchett and Neil Gaiman
-Me Talk Pretty One Day,Little, Brown and Company,David Sedaris
-Lamb: The Gospel According to Biff,William Morrow,Christopher Moore
-Bossypants,Reagan Arthur Books,Tina Fey
-Hyperbole and a Half,Touchstone,Allie Brosh
-Let's Pretend This Never Happened,Amy Einhorn Books,Jenny Lawson
-I Feel Bad About My Neck,Knopf,Nora Ephron
-The 100-Year-Old Man Who Climbed Out the Window and Disappeared,Hesperus Press,Jonas Jonasson
-My Man Jeeves,Herbert Jenkins,P. G. Wodehouse
-A Confederacy of Dunces,LSU Press,John Kennedy Toole
-Skinny Legs and All,Harper Perennial,Tom Robbins
-Is Everyone Hanging Out Without Me?,Crown Archetype,Mindy Kaling
-The Sellout,Farrar, Straus and Giroux,Paul Beatty
-How to Be Champion,Ebury Press,Sarah Millican
+The Hitchhiker's,Pan Books,Douglas Adams,Book
+Good Omens,Workman Publishing,Terry Pratchett and Neil Gaiman,Book
+Me Talk Pretty One Day,Little, Brown and Company,David Sedaris,Journal
+Lamb,William Morrow,Christopher Moore,Book
+Bossypants,Reagan Arthur Books,Tina Fey,Magazine
+Hyperbole and a Half,Touchstone,Allie Brosh,Book
+Let's Pretend This Never Happened,Amy Einhorn Books,Jenny Lawson,Magazine
+I Feel Bad About My Neck,Knopf,Nora Ephron,Book
+My Man Jeeves,Herbert Jenkins,P. G. Wodehouse,Journal
+A Confederacy of Dunces,LSU Press,John Kennedy Toole,Book
+Skinny Legs and All,Harper Perennial,Tom Robbins,Magazine
+Is Everyone Hanging Out Without Me?,Crown Archetype,Mindy Kaling,Book
+The Sellout,Farrar, Straus and Giroux,Paul Beatty,Journal
+How to Be Champion,Ebury Press,Sarah Millican,Book
