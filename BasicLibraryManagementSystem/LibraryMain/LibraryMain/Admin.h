@@ -46,7 +46,7 @@ public:
 	Admin(const Admin& other);
 
 	// Function to add inventory items
-	void addInventoryItem(const std::string& itemName, const std::string& itemType);
+	void addInventoryItem(const std::string& title, const std::string& publisher, const std::string& author, const std::string& itemType);
 	// Function to delete inventory items
 	void deleteInventoryItem(const std::string& itemName);
 	// Function to add user accounts
