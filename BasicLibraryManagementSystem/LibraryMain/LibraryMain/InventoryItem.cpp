@@ -1,5 +1,7 @@
 #include "InventoryItem.h"
 #include <iostream>
+#include <string>
+#include <iomanip>
 
 //constructors
 InventoryItem::InventoryItem(std::string t, std::string p, std::string a) : title(t), publisher(p), author(a) {
@@ -28,4 +30,17 @@ void InventoryItem::setPublisher(std::string p) {
 }
 void InventoryItem::setAuthor(std::string a) {
 	author = a;
+}
+void InventoryItem::print() const {
+	std::cout << "\n"
+		<< std::left
+		<< std::setw(35) << "Title"
+		<< std::setw(25) << "Publisher"
+		<< std::setw(25) << "Author" << "\n";
+	std::cout << std::string(100, '-') << "\n";
+
+	std::cout << std::left
+		<< std::setw(35) << title
+		<< std::setw(25) << publisher
+		<< std::setw(25) << author << "\n\n";
 }

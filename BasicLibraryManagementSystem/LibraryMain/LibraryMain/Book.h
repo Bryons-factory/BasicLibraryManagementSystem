@@ -19,6 +19,8 @@ public:
 	std::string getISBN() const;
 	//sets
 	void setISBN(std::string isbn);
+	//print
+	void print() const;
 };
 
 #endif

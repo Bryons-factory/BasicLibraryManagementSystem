@@ -25,6 +25,8 @@ public:
 	void setTitle(std::string t);
 	void setPublisher(std::string p);
 	void setAuthor(std::string a);
+	//print
+	void print() const;
 };
 
 #endif
