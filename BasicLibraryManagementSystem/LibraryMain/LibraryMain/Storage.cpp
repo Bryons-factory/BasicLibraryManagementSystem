@@ -2,7 +2,7 @@
 #include <iostream>
 
 //constructors
-Storage::Storage(InventoryItem* inv, int ele, User* users, int numU) {
+Storage::Storage(Book* inv, int ele, User* users, int numU) {
 	inventory = inv;
 	inventoryElements = ele;
 	userAccounts = users;
@@ -17,7 +17,7 @@ Storage::Storage(const Storage& other) {
 
 //gets
 //inv
-InventoryItem Storage::getInventoryItemAt(int index) const {
+Book Storage::getInventoryItemAt(int index) const {
 	if (index >= 0 && index < inventoryElements) {
 		return inventory[index];
 	}
@@ -25,7 +25,7 @@ InventoryItem Storage::getInventoryItemAt(int index) const {
 		std::cout << "Index does not exist";
 	}
 }
-InventoryItem* Storage::getInventory() const {
+Book* Storage::getInventory() const {
 	return inventory;
 }
 int Storage::getInventoryElements() const {
@@ -49,7 +49,7 @@ int Storage::getNumUsers() const {
 
 //sets
 //inv
-void Storage::setInventoryItemAt(int index, InventoryItem item) {
+void Storage::setInventoryItemAt(int index, Book item) {
 	if (index >= 0 && index < inventoryElements) {
 		inventory[index] = item;
 	}
@@ -57,13 +57,13 @@ void Storage::setInventoryItemAt(int index, InventoryItem item) {
 		std::cout << "Index does not exist";
 	}
 }
-void Storage::setInventory(InventoryItem* inv) {
+void Storage::setInventory(Book* inv) {
 	inventory = inv;
 }
-void Storage::addInventoryItem(InventoryItem item) {
+void Storage::addInventoryItem(Book item) {
 	inventoryElements++;
-	InventoryItem* oldInv = inventory;
-	inventory = new InventoryItem[inventoryElements];
+	Book* oldInv = inventory;
+	inventory = new Book[inventoryElements];
 	for (int i = 0; i < inventoryElements - 1; i++) {
 		inventory[i] = oldInv[i];
 	}
@@ -75,9 +75,9 @@ void Storage::removeInventoryItemAt(int index) {
 		for (int i = index; i < inventoryElements - 1; i++) {
 			inventory[i] = inventory[i + 1];
 		}
-		InventoryItem* oldInv = inventory;
+		Book* oldInv = inventory;
 		inventoryElements--;
-		inventory = new InventoryItem[inventoryElements];
+		inventory = new Book[inventoryElements];
 		for (int i = 0; i < inventoryElements; i++) {
 			inventory[i] = oldInv[i];
 		}

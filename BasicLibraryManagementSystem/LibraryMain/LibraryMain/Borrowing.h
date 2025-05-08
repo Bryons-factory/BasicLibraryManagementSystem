@@ -3,24 +3,25 @@
 #include <iostream>
 #include <string>
 #include "InventoryItem.h"
+#include "Book.h"
 //#include "Storage.h"
 
 class Borrowing {
 private:
-	InventoryItem* userInventory;
+	Book* userInventory;
 	int inventoryElements;
 
 public:
 	// Default constructor
 	Borrowing() {
-		userInventory = new InventoryItem[10];
+		userInventory = new Book[10];
 		inventoryElements = 0;
 	}
 
 	// Constructor with parameters
-	Borrowing(InventoryItem* inv, int ele) {
+	Borrowing(Book* inv, int ele) {
 		inventoryElements = ele;
-		userInventory = new InventoryItem[inventoryElements];
+		userInventory = new Book[inventoryElements];
 		for (int i = 0; i < inventoryElements; i++) {
 			userInventory[i] = inv[i];
 		}
@@ -29,7 +30,7 @@ public:
 	// Copy constructor (deep copy)
 	Borrowing(const Borrowing& other) {
 		inventoryElements = other.inventoryElements;
-		userInventory = new InventoryItem[inventoryElements];
+		userInventory = new Book[inventoryElements];
 		for (int i = 0; i < inventoryElements; i++) {
 			userInventory[i] = other.userInventory[i];
 		}
@@ -41,18 +42,18 @@ public:
 	}
 
 	// Get inventory item at index
-	InventoryItem getInventoryItemAt(int index) const {
+	Book getInventoryItemAt(int index) const {
 		if (index >= 0 && index < inventoryElements) {
 			return userInventory[index];
 		}
 		else {
 			std::cout << "Index does not exist\n";
-			return InventoryItem(); // Return default
+			return Book(); // Return default
 		}
 	}
 
 	// Get full inventory pointer
-	InventoryItem* getInventory() const {
+	Book* getInventory() const {
 		return userInventory;
 	}
 
@@ -62,7 +63,7 @@ public:
 	}
 
 	// Set item at index
-	void setInventoryItemAt(int index, InventoryItem item) {
+	void setInventoryItemAt(int index, Book item) {
 		if (index >= 0 && index < inventoryElements) {
 			userInventory[index] = item;
 		}
@@ -72,15 +73,15 @@ public:
 	}
 
 	// Replace inventory pointer (shallow copy — use with care)
-	void setInventory(InventoryItem* inv) {
+	void setInventory(Book* inv) {
 		userInventory = inv;
 	}
 
 	// Add item to end of inventory
-	void addInventoryItem(InventoryItem item) {
+	void addInventoryItem(Book item) {
 		inventoryElements++;
-		InventoryItem* oldInv = userInventory;
-		userInventory = new InventoryItem[inventoryElements];
+		Book* oldInv = userInventory;
+		userInventory = new Book[inventoryElements];
 		for (int i = 0; i < inventoryElements - 1; i++) {
 			userInventory[i] = oldInv[i];
 		}
@@ -94,9 +95,9 @@ public:
 			for (int i = index; i < inventoryElements - 1; i++) {
 				userInventory[i] = userInventory[i + 1];
 			}
-			InventoryItem* oldInv = userInventory;
+			Book* oldInv = userInventory;
 			inventoryElements--;
-			userInventory = new InventoryItem[inventoryElements];
+			userInventory = new Book[inventoryElements];
 			for (int i = 0; i < inventoryElements; i++) {
 				userInventory[i] = oldInv[i];
 			}
@@ -112,7 +113,7 @@ public:
 		inventoryElements = ele;
 	}
 	
-	bool compareDuplicateItems(InventoryItem userInventory, InventoryItem libraryInventory){
+	bool compareDuplicateItems(Book userInventory, Book libraryInventory){
 		//if(userInventory.getTitle == ) {
 
 		//}
