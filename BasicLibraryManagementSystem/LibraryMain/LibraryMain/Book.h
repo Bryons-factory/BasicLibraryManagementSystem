@@ -7,7 +7,11 @@
 class Book : InventoryItem {
 private:
 	std::string ISBN;
+	std::string item;
 public:
+	void itemType() override {
+		item = "Book";
+	}
 	//constructors
 	Book() { }; //default
 	Book(std::string t, std::string p, std::string a, std::string isbn); //normal

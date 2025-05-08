@@ -10,6 +10,7 @@ private:
 	std::string author;
 
 public:
+	virtual void itemType() = 0;
 	//constructors
 	InventoryItem() { }; //default
 	InventoryItem(std::string t, std::string p, std::string a); //normal

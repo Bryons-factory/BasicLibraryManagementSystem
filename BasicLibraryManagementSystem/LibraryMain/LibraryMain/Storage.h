@@ -16,14 +16,14 @@ private:
 	User* userAccounts;
 	int numUsers;
 
-	InventoryItem* inventory;
+	Book* inventory;
 	int inventoryElements;
 
 
 public:
 	//constructors
-	Storage() { inventory = new InventoryItem[100]; };
-	Storage(InventoryItem* inv, int ele, User* users, int numU);
+	Storage() { inventory = new Book[100]; };
+	Storage(Book* inv, int ele, User* users, int numU);
 	Storage(const Storage& other);
 	//destructor
 	~Storage() { delete[] inventory; };
@@ -36,8 +36,8 @@ public:
 
 	//gets
 	//inv
-	InventoryItem getInventoryItemAt(int index) const;
-	InventoryItem* getInventory() const;
+	Book getInventoryItemAt(int index) const;
+	Book* getInventory() const;
 	int getInventoryElements() const;
 	//users
 	User getUserAt(int index) const;
@@ -46,9 +46,9 @@ public:
 
 	//sets
 	//inv
-	void setInventoryItemAt(int index, InventoryItem item); //sets position index to item
-	void setInventory(InventoryItem* inv); //sets inventory object
-	void addInventoryItem(InventoryItem item); //adds item to back og inventory
+	void setInventoryItemAt(int index, Book item); //sets position index to item
+	void setInventory(Book* inv); //sets inventory object
+	void addInventoryItem(Book item); //adds item to back og inventory
 	void removeInventoryItemAt(int index); //removes item at index
 	void setInventoryElements(int ele);
 	//users
